@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jason.baseframe.view.HeadLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:layout_alignParentTop="true"
+    android:background="@color/Green">
+
+    <RelativeLayout
+        android:id="@+id/head_general_layout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout
+            android:id="@+id/head_btn_back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_btn_back">
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/btn_back" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/head_midle_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="我的主页1"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+
+        <RelativeLayout
+            android:id="@+id/head_right_Layout"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bg_btn_back"
+           >
+
+            <TextView
+                android:id="@+id/right_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="注册"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</com.jason.baseframe.view.HeadLayout>

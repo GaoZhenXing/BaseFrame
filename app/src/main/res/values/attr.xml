@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="bottom_icon" format="reference" />
+    <attr name="bottom_color" format="color" />
+    <attr name="bottom_text" format="string" />
+    <attr name="bottom_text_size" format="dimension" />
+
+    <declare-styleable name="ChangeColorIconView">
+        <attr name="bottom_icon" />
+        <attr name="bottom_color" />
+        <attr name="bottom_text" />
+        <attr name="bottom_text_size" />
+    </declare-styleable>
+
+
+    <declare-styleable name="TabButton">
+        <!--初始显示的图标-->
+        <attr name="image" format="reference" />
+        <!--选中之后显示的图标-->
+        <attr name="clickimage" format="reference" />
+        <!--选中之后显示的颜色-->
+        <attr name="clickcolor" format="color" />
+        <!--图标下显示的文字，不要太长！-->
+        <attr name="text" format="string" />
+        <!--文字的大小-->
+        <attr name="text_size" format="dimension" />
+    </declare-styleable>
+
+</resources>

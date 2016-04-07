@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="ccc">#cccccc</color>
+    <color name="tab_text_selector">#cccccc</color>
+    <color name="tabClick">#22000000</color>
+    <color name="white">@android:color/white</color>
+    <color name="alertBg">#66cccccc</color>
+    <color name="gray">#f9f9f9</color>
+    <!-- 头部镶嵌板默认颜色 -->
+    <color name="Green">#3F51B5</color>
+    <!-- 头部镶嵌板选中颜色 -->
+    <color name="DarkGreen">#303F9F</color>
+</resources>
