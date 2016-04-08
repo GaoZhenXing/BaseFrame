@@ -20,6 +20,9 @@ import com.jason.baseframe.view.TabButton;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 public class MainActivity extends BaseActivity implements View.OnClickListener, ViewPager.OnPageChangeListener, BaseActivity.OnBackButtonClickListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
