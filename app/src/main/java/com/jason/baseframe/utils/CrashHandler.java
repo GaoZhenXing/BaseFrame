@@ -14,6 +14,7 @@ import android.os.Process;
 import android.os.StatFs;
 import android.util.Log;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.jason.baseframe.R;
 
@@ -93,17 +94,18 @@ public class CrashHandler implements UncaughtExceptionHandler {
      * 自定义错误处理,收集错误信息 发送错误报告等操作均在此完成.
      *
      * @param ex 异常信息
-     * @return true 如果处理了该异常信息;否则返回false.
+     * @return true 如果处理了该异常信息 true;否则返回false.
      */
     public boolean handleException(Throwable ex) {
         if (ex == null || mContext == null) {
             return false;
         }
         final String crashReport = getCrashReport(mContext, ex);
+        final File file = save2File(crashReport);
+//        showToast(file);
         new Thread() {
             public void run() {
                 Looper.prepare();
-                File file = save2File(crashReport);
                 sendAppCrashReport(mContext, crashReport, file);
                 Looper.loop();
             }
@@ -160,6 +162,8 @@ public class CrashHandler implements UncaughtExceptionHandler {
     }
 
     private void sendAppCrashReport(final Context context, final String crashReport, final File file) {
+
+
         AlertDialog.Builder builder = new AlertDialog.Builder(context)
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .setTitle(R.string.app_error)
@@ -171,11 +175,12 @@ public class CrashHandler implements UncaughtExceptionHandler {
                                     //TODO 上传到服务器
                                     if (file != null) {
                                         Uri uri = Uri.fromFile(file);
-                                        Log.i(TAG, "Error URL: " + uri.toString());
+                                        L.i(TAG, "Error URL: " + uri.toString());
+
                                     }
 
                                 } catch (Exception e) {
-                                    Log.e(TAG, "error" + ":" + e.getMessage());
+                                    L.e(TAG, "error" + ":" + e.getMessage());
                                 } finally {
                                     dialog.dismiss();
                                     // 退出
@@ -188,6 +193,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
+
                                 // 退出
                                 android.os.Process.killProcess(android.os.Process.myPid());
                                 System.exit(1);
@@ -197,6 +203,18 @@ public class CrashHandler implements UncaughtExceptionHandler {
         //需要的窗口句柄方式，没有这句会报错的
         dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
         dialog.show();
+    }
+   private void showToast(final File file){
+        //使用Toast来显示异常信息
+        new Thread() {
+            @Override
+            public void run() {
+                Looper.prepare();
+                Toast.makeText(mContext,"错误日志保存在"+Uri.fromFile(file).toString(),Toast.LENGTH_LONG).show();
+//                Toast.makeText(mContext, "很抱歉,程序出现异常,即将退出.", Toast.LENGTH_LONG).show();
+                Looper.loop();
+            }
+        }.start();
     }
 
     /**

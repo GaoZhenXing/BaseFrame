@@ -152,7 +152,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     public void OnBackButtonClick(View v) {
         T.show(this, "点击了返回按钮");
-
+        String [] d=null;
+        String s = d[3];
     }
 
 
